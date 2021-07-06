@@ -1,5 +1,3 @@
-# Jogo-de-Adivinhacao
-Jogo de adivinhacao desenvolvido na linguagem Python
 print("_________________________________")
 print("Bem vindo ao jogo de Adivinhação!")
 print("_________________________________")
@@ -9,11 +7,15 @@ total_de_tentativas = 3
 rodada = 1
 
 
-while(rodada <= total_de_tentativas):
+for rodada in range (1, total_de_tentativas + 1):
     print("Tentativa {} de {}".format(rodada, total_de_tentativas))
-    chute_str = input("digite seu numero: ")
+    chute_str = input("digite um numero entre 1 e 100: ")
     chute = int(chute_str)
     print("voce digitou", chute_str)
+
+    if(  chute < 1 or chute > 100 ):
+        print ("voce deve digitar um numero entre 1 e 100!!!")
+        continue #volta para o inicio do programa
 
     acertou = numero_secreto == chute
     maior   = chute > numero_secreto
@@ -22,6 +24,7 @@ while(rodada <= total_de_tentativas):
 
     if (acertou):
        print("voce acertou")
+       break #Para o programa
     else:
         if (maior):
             print ("voce errou, seu chute foi maior que o numero secreto.")
